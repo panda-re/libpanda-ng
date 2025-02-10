@@ -8,7 +8,11 @@ ROOT=$1
 BUILD=$ROOT/build
 LIBPANDAS=$(find $BUILD -maxdepth 1 -name "libpanda-*.so")
 
+LOCAL_DIR=$(dirname "$(realpath $0)")
+RUN_ONE=$LOCAL_DIR/run_one.sh
+
+
 for LIBPANDA in $LIBPANDAS; do
     echo "Running $LIBPANDA"
-    bash ./run_one.sh $ROOT $LIBPANDA
+    bash $RUN_ONE $ROOT $LIBPANDA
 done
