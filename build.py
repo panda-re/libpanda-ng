@@ -8,12 +8,8 @@ import functools
 from glob import glob
 from pathlib import Path
 
-# root = "../../qemu"
 C_LANGUAGE = Language(tsc.language())
 parser = Parser(C_LANGUAGE)
-
-plugin_dir = realpath("../../plugins")
-
 
 def traverse_tree(tree):
 	cursor = tree.walk()
@@ -125,7 +121,6 @@ def preprocess(arch, source, include_defines=False): #,fake_sysroot=True):
 		f"tcg/i386",
 		f"host/include/i386/",
 		"include/tcg",
-		plugin_dir,
 		"contrib/plugins",
 		"include/qemu",
 		realpath(join(script_dir)),
