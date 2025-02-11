@@ -348,4 +348,6 @@ class ExtractTypes(gdb.Command):
 		ctx = get_context()
 		compile_target(ctx["arch"], ctx["target"])
 
+		gdb.execute("q 100")
+
 ExtractTypes()
