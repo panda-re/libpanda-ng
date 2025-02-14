@@ -103,6 +103,8 @@ def arch_to_generic(arch):
 		return "arm"
 	elif arch == "ppc64":
 		return "ppc"
+	elif arch == "loongarch64":
+		return "loongarch"
 	return arch
 
 def preprocess(arch, source, include_defines=False): #,fake_sysroot=True):
