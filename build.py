@@ -94,6 +94,18 @@ def replace_cpp_issues(total):
 	total = total.replace("typename", "_typename")
 	return total
 
+# Fixup 
+def fixup_empty_structs(text):
+	pattern = re.compile(r"struct\s{}\s*(?P<name>\S*);")
+    # Find all matches in the current string
+	matches = pattern.finditer(text)
+	# Replace each match
+	for m in matches:
+		name = m.group('name')
+		replacement = f"char {name}[0];"
+		text = text.replace(m.group(0), replacement)
+	return text
+
 def arch_to_generic(arch):
 	if arch == "x86_64":
 		return "i386"
@@ -229,6 +241,7 @@ def handle_cpp(arch, total, target_defines):
 		total = total.replace("void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask);", "void aarch64_set_svcr(CPUARMState *env, uint64_t _new, uint64_t mask);")
 		total = total.replace("*typename", "*_typename")
 		total = total.replace("vaddr vaddr;", "vaddr _vaddr;")
+		total = fixup_empty_structs(total)
 		f.write(total)
 		f.write("\n")
 		f.write(target_defines)
