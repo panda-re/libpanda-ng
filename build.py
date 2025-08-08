@@ -181,6 +181,7 @@ def compile_target(arch, target):
 	#include "qemu/osdep.h"
 	#include "exec/hwaddr.h"
 	#include "exec/cpu-common.h"
+	#include "exec/translation-block.h"
 	#include "target/{arch_to_generic(arch)}/cpu-param.h"
 	#include "exec/target_long.h"
 	#include "system/runstate.h"
