@@ -321,6 +321,7 @@ def handle_python(arch, total):
 	total = "\n".join([process_line(x) for x in total.split("\n") if x and not x.startswith("#")])
 	total = remove_functions(total)
 	total = simplify_brackets(total)
+	total = total.replace("typedef __signed__ ", "typedef ")
 	with open(f"panda_python_{arch}.h","w") as f:
 		f.write(total)
 
