@@ -1,0 +1,49 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1761373498,
+        "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "panda-qemu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761610718,
+        "narHash": "sha256-ukRq3J9P07i3tFXg2/aquECZajPnbKfA8NgiO4TdDYY=",
+        "owner": "rehostingdev",
+        "repo": "qemu",
+        "rev": "c12d137683cc323f5fc190595cab6ca45ddb7077",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rehostingdev",
+        "ref": "nix-flake-init",
+        "repo": "qemu",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "panda-qemu": "panda-qemu"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
