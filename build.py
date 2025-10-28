@@ -130,8 +130,6 @@ def preprocess(arch, source, include_defines=False): #,fake_sysroot=True):
 		"panda/include",
 		"build",
 		"include",
-		"/usr/include/glib-2.0",
-		"/usr/lib/x86_64-linux-gnu/glib-2.0/include",
 		f"target/{arch_to_generic(arch)}",
 		f"include/tcg/{arch}",
 		f"tcg/i386",
@@ -143,10 +141,12 @@ def preprocess(arch, source, include_defines=False): #,fake_sysroot=True):
 		".",
 	]
 
-	
+	glib_includes = check_output(['pkg-config', '--cflags-only-I', 'glib-2.0']).decode('utf-8', errors='ignore').strip()
+
 	with open("/tmp/simple.c","w") as f:
 		f.write(source)
 	includes = " ".join([f"-I{realpath(join(root, include))}" for include in includes])
+	includes += ' ' + glib_includes
 
 	defines = '-dD' if include_defines else ''
 
