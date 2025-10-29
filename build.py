@@ -31,6 +31,11 @@ def remove_functions(code):
 	for node in traverse_tree(tree):
 		if node.type == 'function_definition':
 			remove_lines.append((node.start_point[0], node.end_point[0]))
+		if node.type == 'function_declarator':
+			if not node.is_named:
+				continue
+			if node.text.startswith(b'__assert_fail ') or node.text.startswith(b'__assert_perror_fail ') or node.text.startswith(b'__assert '):
+				remove_lines.append((node.start_point[0], node.end_point[0]))
 	
 	codelines = code.split("\n")
 	code = code.split("\n")
