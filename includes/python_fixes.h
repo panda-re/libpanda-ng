@@ -18,3 +18,10 @@ typedef int __builtin_va_list;
 #define _Static_assert(...)
 #define __thread
 #define asm(...)
+
+typedef uint64_t hwaddr;
+typedef uint32_t MemTxResult;
+typedef uint64_t MemTxAttrs;
+typedef struct MemoryRegion MemoryRegion;
+typedef struct CPUState CPUState;
+typedef struct TranslationBlock TranslationBlock;
